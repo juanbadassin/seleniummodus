@@ -1,0 +1,18 @@
+services:
+  chrome:
+    ports:
+    - "5900:5900"
+    image: selenium/standalone-chrome-debug
+    volumes:
+    - /dev/shm:/dev/shm
+  firefox:
+    image: selenium/standalone-firefox-debug
+    volumes:
+    - /dev/shm:/dev/shm
+  test_runner:
+    tty: true
+    volumes:
+    - .:/source
+    working_dir: /source
+    image: python
+version: '3.3'
